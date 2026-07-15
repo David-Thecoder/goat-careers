@@ -21,7 +21,7 @@ export function SignatureTitle({
     const start = performance.now();
     let rafId: number;
 
-    function frame(now: number) {
+    const frame = (now: number) => {
       const progress = Math.min((now - start) / duration, 1);
       const revealed = Math.floor(progress * text.length);
       let output = "";
@@ -35,13 +35,16 @@ export function SignatureTitle({
           ];
       }
 
-      el.textContent = output;
+      // ponytail: el est garanti non-null car on a fait le check en haut,
+      // mais TS ne le sait pas à travers la closure → on assert
+      el!.textContent = output;
       if (progress < 1) rafId = requestAnimationFrame(frame);
-    }
+    };
 
     rafId = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(rafId);
   }, [text]);
+
 
   return (
     <h1
