@@ -1,0 +1,10 @@
+create index idx_legends_sport on public.legends(sport_id);
+create index idx_moments_chapter on public.legendary_moments(chapter_id);
+create index idx_achievements_legend on public.achievements(legend_id);
+create index idx_quotes_legend on public.quotes(legend_id);
+create index idx_sources_legend on public.sources(legend_id);
+create index idx_progress_legend on public.user_progress(legend_id);
+create index idx_progress_chapter on public.user_progress(chapter_id);
+create index idx_progress_moment on public.user_progress(moment_id);
+create index idx_favorites_legend on public.user_favorites(legend_id);
+create index idx_favorites_moment on public.user_favorites(moment_id);

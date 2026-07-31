@@ -1,0 +1,2 @@
+import type { TimelineEvent } from '../../types/legend';
+export function Timeline({ events }: { events: TimelineEvent[] }) { return <section className="timeline"><div className="section-head"><p className="eyebrow">World Timeline</p><h2>Years that shaped the myth</h2></div><div className="timeline-track">{events.map((e) => <article key={`${e.year}-${e.title}`}><span>{e.year}</span><h3>{e.title}</h3><p>{e.description}</p></article>)}</div></section>; }

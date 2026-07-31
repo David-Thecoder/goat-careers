@@ -1,0 +1,2 @@
+import type { LegendaryMoment } from '../../types/legend';
+export function LegendaryMoments({ moments }: { moments: LegendaryMoment[] }) { return <section className="moments"><div className="section-head"><p className="eyebrow">Legendary Moments</p><h2>Scenes people remember</h2></div><div className="moment-grid">{moments.map((m) => <article key={m.title}><p className="eyebrow">{m.date ?? 'iconic'}</p><h3>{m.title}</h3><p>{m.context}</p><strong>{m.whyItMatters}</strong></article>)}</div></section>; }

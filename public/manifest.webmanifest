@@ -1,0 +1,13 @@
+{
+  "name": "GOAT Careers",
+  "short_name": "GOAT Careers",
+  "description": "Multisport documentary stories about greatness, pressure, reinvention and legacy.",
+  "start_url": "/goat-careers/",
+  "scope": "/goat-careers/",
+  "display": "standalone",
+  "background_color": "#060606",
+  "theme_color": "#060606",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
