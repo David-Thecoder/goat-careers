@@ -1,0 +1,4 @@
+import type { CSSProperties } from 'react';
+import type { Legend } from '../../types/legend';
+import { Badge } from '../ui';
+export function Hero({ legend }: { legend: Legend }) { return <section className="hero" style={{'--accent': legend.theme.accent, '--secondary': legend.theme.secondary, '--glow': legend.theme.glow} as CSSProperties}><div className="hero-orb" /><p className="eyebrow">{legend.sport} · {legend.country} · {legend.era}</p><h1>{legend.name}</h1><p className="archetype">{legend.hero.title}</p><p className="hero-thesis">{legend.hero.thesis}</p><div className="tag-row">{legend.hero.tags.map((t) => <Badge key={t}>{t}</Badge>)}</div><div className="hero-stats">{legend.stats.slice(0,4).map((s) => <div key={s.label}><strong>{s.value}</strong><span>{s.label}</span></div>)}</div></section>; }

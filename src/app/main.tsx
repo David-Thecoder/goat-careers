@@ -1,5 +1,16 @@
-import { createRoot } from "react-dom/client";
-import App from "./App";
-import "../styles/index.css";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import '../index.css';
+import { QueryProvider } from '../lib/query/QueryProvider';
+import { AuthProvider } from '../features/auth/AuthProvider';
 
-createRoot(document.getElementById("root")!).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <QueryProvider>
+      <AuthProvider>
+        <App />
+      </AuthProvider>
+    </QueryProvider>
+  </React.StrictMode>
+);

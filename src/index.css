@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: theme(colors.goat.background);
+    --panel: theme(colors.goat.panel);
+    --panel2: theme(colors.goat.panel2);
+    --text: theme(colors.goat.text);
+    --text2: theme(colors.goat.text2);
+    --muted: theme(colors.goat.muted);
+    --line: theme(colors.goat.line);
+    --gold: theme(colors.goat.gold);
+    --display: theme(fontFamily.display);
+    --body: theme(fontFamily.body);
+    --mono: theme(fontFamily.mono);
+  }
+
+  * { @apply box-border; }
+  html { scroll-behavior: smooth; }
+  body { @apply m-0 bg-goat-background font-body text-goat-text antialiased; line-height: 1.55; }
+  a { @apply text-inherit no-underline; }
+  button { font: inherit; }
+  main { @apply min-h-screen; }
+}
+
+@layer components {
+  .topbar { @apply pointer-events-none fixed inset-x-0 top-0 z-30 flex items-center justify-between px-[clamp(18px,4vw,64px)] py-[18px]; background: linear-gradient(#050506, rgba(5,5,6,.55), transparent); }
+  .topbar > * { @apply pointer-events-auto; }
+  .brand { @apply font-display uppercase tracking-[.08em]; }
+  .brand span { @apply ml-1 text-goat-gold; }
+  footer { @apply flex justify-between gap-5 border-t border-goat-line px-[clamp(18px,4vw,64px)] py-9 text-xs text-goat-muted; }
+
+  .eyebrow { @apply font-mono text-[0.68rem] font-bold uppercase tracking-[.18em] text-goat-muted; }
+
+  .home-hero { @apply flex min-h-[86svh] flex-col justify-end px-[clamp(20px,7vw,110px)] pb-20 pt-[150px]; background: radial-gradient(circle at 74% 24%, rgba(216,180,93,.18), transparent 29%); }
+  .home-hero h1 { @apply my-6 max-w-[9ch] font-display text-[clamp(4rem,12vw,13rem)] uppercase leading-[.86] tracking-[-.03em]; }
+  .home-hero p:not(.eyebrow) { @apply max-w-3xl text-[clamp(1.1rem,2vw,1.5rem)] text-goat-text2; }
+  .home-grid { @apply grid grid-cols-5 border-t border-goat-line; }
+  .home-card { @apply flex min-h-[330px] flex-col justify-end gap-2.5 border-b border-r border-goat-line p-6 transition duration-normal ease-goat hover:-translate-y-1 hover:bg-[#0d0d10]; background: radial-gradient(circle at 70% 20%, var(--glow), transparent 35%); }
+  .home-card span { @apply font-mono text-[.7rem] font-bold text-[color:var(--accent)]; }
+  .home-card h2 { @apply m-0 font-display text-[clamp(2rem,4vw,4.8rem)] uppercase leading-[.9]; }
+  .home-card p { @apply m-0 font-mono text-[.72rem] font-bold uppercase tracking-[.12em] text-[color:var(--accent)]; }
+  .home-card small { @apply text-goat-muted; }
+
+  .hero { @apply relative flex min-h-screen flex-col justify-end overflow-hidden bg-mythic-stage px-[clamp(20px,7vw,110px)] pb-20 pt-[140px]; }
+  .hero-orb { @apply absolute right-[-12vw] top-[10vh] h-[66vw] w-[66vw] blur-[8px]; background: radial-gradient(circle, var(--glow), transparent 62%); }
+  .hero > *:not(.hero-orb) { @apply relative; }
+  .hero h1 { @apply my-5 max-w-[9ch] font-display text-[clamp(4.5rem,13vw,13.5rem)] uppercase leading-[.8] tracking-[-.04em]; }
+  .archetype { @apply font-mono text-[clamp(.82rem,1.3vw,1.05rem)] font-bold uppercase tracking-[.23em] text-[color:var(--accent)]; }
+  .hero-thesis { @apply my-7 max-w-[820px] text-[clamp(1.05rem,2vw,1.55rem)] text-goat-text2; }
+  .tag-row { @apply flex flex-wrap gap-2; }
+  .hero-stats { @apply mt-8 grid max-w-[940px] grid-cols-4 gap-3; }
+  .hero-stats div { @apply rounded-[18px] border border-goat-line bg-white/[.03] p-4; }
+  .hero-stats strong { @apply block font-display text-[2.5rem] leading-none text-[color:var(--accent)]; }
+  .hero-stats span { @apply font-mono text-[.62rem] font-bold uppercase tracking-[.13em] text-goat-muted; }
+
+  section:not(.hero):not(.home-hero) { @apply border-t border-goat-line px-[clamp(20px,7vw,110px)] py-[100px]; }
+  .section-head { @apply mb-14 grid grid-cols-[minmax(120px,220px)_minmax(0,1fr)] gap-10; }
+  .section-head h2 { @apply m-0 font-display text-[clamp(2.8rem,7vw,7rem)] uppercase leading-[.9]; }
+
+  .chapter { @apply mx-auto mb-7 grid max-w-[1080px] grid-cols-[110px_1fr] gap-11 rounded-[26px] border border-goat-line bg-mythic-panel p-8; }
+  .chapter-index { @apply font-display text-6xl text-[color:var(--accent)] opacity-85; }
+  .chapter h3, .timeline h3, .network h3, .moment-grid h3, .discovery h3 { @apply my-3 font-display text-[clamp(2rem,4vw,4rem)] uppercase leading-[.9]; }
+  .chapter p { @apply text-lg text-goat-text2; }
+  .chapter ul { @apply grid gap-2 pl-5 text-goat-text2; }
+
+  .timeline-track { @apply grid grid-cols-5 border-l border-goat-line; }
+  .timeline-track article { @apply min-h-60 border-r border-t border-goat-line p-6; }
+  .timeline-track span { @apply font-display text-5xl text-[color:var(--accent)]; }
+  .timeline-track p, .network p, .moment-grid p, .legacy p, .sport-dna p, .discovery p, .passport p { @apply text-goat-text2; }
+
+  .network-grid, .moment-grid, .discovery-grid { @apply grid grid-cols-4 gap-3.5; }
+  .network article, .moment-grid article, .discovery a { @apply rounded-[22px] border border-goat-line bg-white/[.035] p-5; }
+  .network article { box-shadow: inset 0 calc(var(--weight) * 3px) 0 var(--accent); }
+  .network span { @apply font-mono text-[.62rem] font-bold uppercase tracking-[.15em] text-[color:var(--accent)]; }
+  .network strong, .moment-grid strong { @apply block text-[color:var(--accent)]; }
+
+  .legacy { @apply grid gap-4; }
+  .legacy .section-head { @apply mb-9; }
+  .legacy article { @apply grid grid-cols-[1fr_40px_1fr_2fr] items-center gap-5 rounded-[20px] border border-goat-line p-5; }
+  .legacy span { @apply font-display text-[clamp(2rem,4vw,4rem)] uppercase leading-[.9]; }
+  .legacy i { @apply text-3xl not-italic text-[color:var(--accent)]; }
+
+  .sport-dna div:not(.section-head) { @apply mt-6 flex flex-wrap gap-2.5; }
+  .sport-dna div:not(.section-head) span { @apply rounded-full border border-[color:var(--accent)] px-3.5 py-2 font-mono text-[.7rem] font-bold uppercase tracking-[.12em] text-[color:var(--accent)]; }
+  .discovery a span { @apply font-mono text-xs font-bold uppercase tracking-[.12em] text-[color:var(--accent)]; }
+
+  .passport { @apply text-goat-background; background: linear-gradient(135deg, var(--accent), var(--secondary)); }
+  .passport .eyebrow, .passport p { color: rgba(0,0,0,.64); }
+  .passport h2 { @apply my-5 font-display text-[clamp(3rem,9vw,9rem)] uppercase leading-[.82]; }
+  .passport-grid { @apply grid max-w-[900px] grid-cols-4 gap-3; }
+  .passport-grid div { @apply rounded-[18px] border border-black/20 bg-white/20 p-4; }
+  .passport-grid strong { @apply block font-display text-5xl; }
+  .passport-grid span { @apply font-mono text-[.65rem] font-bold uppercase tracking-[.12em]; }
+
+  .visual-geometry .hero-orb { background: repeating-radial-gradient(circle, var(--glow) 0 2px, transparent 2px 38px); }
+  .visual-crown .hero-orb { clip-path: polygon(50% 0,62% 28%,100% 20%,75% 100%,25% 100%,0 20%,38% 28%); }
+  .visual-memory .hero-orb { filter: blur(28px); }
+  .visual-reconstruction .hero-orb { background: linear-gradient(125deg, transparent 12%, var(--glow) 13% 15%, transparent 16% 31%, var(--glow) 32% 35%, transparent 36%); }
+}
+
+@layer utilities {
+  @media (max-width: 980px) {
+    .home-grid, .timeline-track, .network-grid, .moment-grid, .discovery-grid { @apply grid-cols-2; }
+    .section-head { @apply grid-cols-1; }
+    .legacy article { @apply grid-cols-1; }
+    .hero-stats, .passport-grid { @apply grid-cols-2; }
+  }
+
+  @media (max-width: 640px) {
+    .home-grid, .timeline-track, .network-grid, .moment-grid, .discovery-grid, .hero-stats, .passport-grid { @apply grid-cols-1; }
+    .hero h1 { @apply text-[clamp(4rem,20vw,7rem)]; }
+    section:not(.hero):not(.home-hero) { @apply py-[70px]; }
+    .chapter { @apply grid-cols-1 gap-2.5 p-5; }
+    .chapter-index { @apply text-[2.8rem]; }
+    .topbar { @apply px-4 py-3.5; }
+    footer { @apply flex-col; }
+    .home-card { @apply min-h-[230px]; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+}
+
+@layer components {
+  .topnav { @apply flex items-center gap-3; }
+  .topnav > a { @apply rounded-full border border-goat-line bg-white/[.035] px-4 py-2 font-mono text-[.68rem] font-bold uppercase tracking-[.14em] text-goat-text2 transition duration-normal ease-goat hover:border-goat-gold/60 hover:text-goat-gold; }
+  .home-cta { @apply mt-7 inline-flex w-fit rounded-full border border-goat-gold bg-goat-gold px-5 py-3 font-mono text-xs font-bold uppercase tracking-[.16em] text-goat-background transition duration-normal ease-goat hover:bg-goat-text; }
+
+  .universe-hero { @apply relative flex min-h-[88svh] flex-col justify-end overflow-hidden px-[clamp(20px,7vw,110px)] pb-20 pt-[140px]; background: radial-gradient(circle at 78% 22%, rgba(216,180,93,.22), transparent 31%), linear-gradient(135deg,#050506,#09090c); }
+  .universe-hero h1 { @apply my-6 max-w-[10ch] font-display text-[clamp(4rem,12vw,12.5rem)] uppercase leading-[.84] tracking-[-.035em]; }
+  .universe-hero p:not(.eyebrow) { @apply max-w-3xl text-[clamp(1.1rem,2vw,1.5rem)] text-goat-text2; }
+
+  .universe-board { @apply grid grid-cols-[1.1fr_.9fr] gap-4; }
+  .universe-nodes { @apply grid grid-cols-5 gap-3; }
+  .universe-node { @apply relative flex min-h-[280px] flex-col justify-end overflow-hidden rounded-[26px] border border-goat-line bg-white/[.035] p-5 transition duration-normal ease-goat hover:-translate-y-1 hover:border-[color:var(--accent)]; background-image: radial-gradient(circle at 70% 18%, var(--glow), transparent 36%); }
+  .universe-node span { @apply font-mono text-[.62rem] font-bold uppercase tracking-[.14em] text-[color:var(--accent)]; }
+  .universe-node strong { @apply mt-4 block font-display text-[clamp(2rem,4vw,4.7rem)] uppercase leading-[.88]; }
+  .universe-node small { @apply text-goat-muted; }
+  .universe-edges { @apply grid gap-3; }
+  .universe-edges article { @apply rounded-[22px] border border-goat-line bg-mythic-panel p-5; }
+  .universe-edges span { @apply font-mono text-[.68rem] font-bold uppercase tracking-[.14em] text-goat-gold; }
+  .universe-edges p { @apply text-goat-text2; }
+
+  .world-timeline-list { @apply grid gap-4; }
+  .world-timeline-list article { @apply grid grid-cols-[220px_1fr] gap-6 rounded-[24px] border border-goat-line bg-white/[.03] p-6; }
+  .world-timeline-list article > div:first-child { @apply flex flex-col; }
+  .world-timeline-list span { @apply font-display text-[clamp(3rem,6vw,6rem)] leading-none text-goat-gold; }
+  .world-timeline-list small { @apply mt-2 font-mono text-[.65rem] font-bold uppercase tracking-[.14em] text-goat-muted; }
+  .world-timeline-list h3 { @apply m-0 font-display text-[clamp(2rem,4vw,4.8rem)] uppercase leading-[.9]; }
+  .world-timeline-list p { @apply max-w-3xl text-goat-text2; }
+  .timeline-links { @apply mt-4 flex flex-wrap gap-2; }
+  .timeline-links a { @apply rounded-full border border-[color:var(--accent)] px-3 py-1.5 font-mono text-[.66rem] font-bold uppercase tracking-[.12em] text-[color:var(--accent)]; }
+
+  .connected-grid { @apply grid grid-cols-4 gap-3.5; }
+  .connected-grid a { @apply min-h-[240px] rounded-[24px] border border-goat-line bg-white/[.035] p-5 transition duration-normal ease-goat hover:-translate-y-1 hover:border-[color:var(--accent)]; background-image: radial-gradient(circle at 82% 12%, var(--glow), transparent 38%); }
+  .connected-grid span { @apply font-mono text-[.62rem] font-bold uppercase tracking-[.15em] text-[color:var(--accent)]; }
+  .connected-grid h3 { @apply my-4 font-display text-[clamp(2.2rem,5vw,5rem)] uppercase leading-[.86]; }
+  .connected-grid p { @apply text-goat-text2; }
+
+  .global-passport { @apply text-goat-background; background: linear-gradient(135deg, #d8b45d, #f4d36a); }
+  .global-passport .eyebrow, .global-passport p { color: rgba(0,0,0,.62); }
+  .global-passport h2 { @apply my-5 max-w-[980px] font-display text-[clamp(3rem,9vw,9rem)] uppercase leading-[.82]; }
+  .global-passport-grid { @apply grid max-w-[980px] grid-cols-4 gap-3; }
+  .global-passport-grid div { @apply rounded-[18px] border border-black/20 bg-white/25 p-4; }
+  .global-passport-grid strong { @apply block font-display text-5xl; }
+  .global-passport-grid span { @apply font-mono text-[.65rem] font-bold uppercase tracking-[.12em]; }
+}
+
+@layer utilities {
+  @media (max-width: 980px) {
+    .universe-board { @apply grid-cols-1; }
+    .universe-nodes, .connected-grid { @apply grid-cols-2; }
+    .world-timeline-list article { @apply grid-cols-1; }
+  }
+
+  @media (max-width: 640px) {
+    .topnav { @apply gap-2; }
+    .topnav > a { @apply px-3 py-2 text-[.6rem]; }
+    .universe-nodes, .connected-grid, .global-passport-grid { @apply grid-cols-1; }
+    .universe-node, .connected-grid a { @apply min-h-[210px]; }
+  }
+}

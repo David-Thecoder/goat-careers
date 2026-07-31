@@ -1,0 +1,2 @@
+import type { LegacyBridge as Bridge } from '../../types/legend';
+export function LegacyBridge({ items }: { items: Bridge[] }) { return <section className="legacy"><div className="section-head"><p className="eyebrow">Legacy Bridges</p><h2>The inheritance chain</h2></div>{items.map((b) => <article key={`${b.from}-${b.to}`}><span>{b.from}</span><i>↓</i><span>{b.to}</span><p>{b.link}</p></article>)}</section>; }
